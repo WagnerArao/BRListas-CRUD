@@ -10,6 +10,7 @@ include_once "config.php";
     <body>
         <h1>BRLISTAS DIGITAL</h1>
         <a href="adicionar.php">Crie seu cadastro!</a>
+        
         <table border="1">
            <thead>
                 <tr>
@@ -29,6 +30,7 @@ include_once "config.php";
 
            </tbody>            
         </table>
+       
     <script src="scripts/listar.js"></script>
  </body>
 </html>
