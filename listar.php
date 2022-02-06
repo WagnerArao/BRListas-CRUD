@@ -20,7 +20,10 @@ while ($lista = $sql->fetch(PDO::FETCH_ASSOC)){
                 <td>$cpf</td>
                 <td>$rg</td>
                 <td>$nasc</td>
-                <td>Ações</td>
+                <td>
+                    <a href='editar.php?id=$id'><button>Editar</button><a/>
+                    <button>Excluir</button>
+                </td>
             </tr>";
     echo $dados;
 

@@ -35,7 +35,8 @@ if(!empty($id)){
     <body>
         <h1>BRLISTAS DIGITAL</h1>
         Alterar seus dados:
-        <form method="POST" action="editar_action.php">            
+        <form method="POST" action="editar_action.php">
+            <input type="hidden" name="id" value="<?=$info['id'];?>">           
             <label>
                 Nome: <br>
                 <input type="text" name="nome" value="<?=$info['nome'];?>">
