@@ -1,9 +1,10 @@
 <?php
 include_once "config.php";
 
-$input = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
-if (!empty($input)){
+$input = filter_input_array(INPUT_POST, FILTER_DEFAULT, false);
+
+if ($input){
 
     $sql = $pdo->prepare("INSERT INTO estados (id, uf) VALUES (:id, :uf)");
     $sql->bindValue(':id', $id);
@@ -37,9 +38,8 @@ if (!empty($input)){
     echo "Dados adicionados com sucesso!";
     exit;
 
-
 } else {
-    header('Location: adicionar.php');
-    echo "Dados incompletos!";
+    return false;
+    header('Location: adicionar.php');    
     exit;
 } 
