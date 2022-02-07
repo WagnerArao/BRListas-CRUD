@@ -1,10 +1,6 @@
 <?php
 include_once "config.php";
 
-$sql = $pdo->query("SELECT pessoas.id, pessoas.nome, telefones.telefone, enderecos.endereco, enderecos.numero, enderecos.cep, estados.uf, pessoas.cpf, pessoas.rg, pessoas.data_nascimento
-FROM pessoas, enderecos, telefones, estados
-WHERE pessoas.id = telefones.pessoa_id AND enderecos.id = pessoas.endereco_id AND estados.id = enderecos.estado_id;");
-
 $dados = "";
 
 while ($lista = $sql->fetch(PDO::FETCH_ASSOC)){
@@ -22,7 +18,7 @@ while ($lista = $sql->fetch(PDO::FETCH_ASSOC)){
                 <td>$nasc</td>
                 <td>
                     <a href='editar.php?id=$id'><button>Editar</button><a/>
-                    <button>Excluir</button>
+                    <a href='excluir.php?id=$id'><button>Excluir</button><a/>
                 </td>
             </tr>";
     echo $dados;
