@@ -28,52 +28,38 @@ if(!empty($id)){
 ?>
 
 <html>
-    <head>
-        <title>BRListas</title>
-        
-    </head>
+    <?php require "head.php";?>
     <body>
-        <h1>BRLISTAS DIGITAL</h1>
-        Alterar seus dados:
-        <form method="POST" action="editar_action.php">
-            <input type="hidden" name="id" value="<?=$info['id'];?>">           
-            <label>
-                Nome: <br>
-                <input type="text" name="nome" value="<?=$info['nome'];?>">
-            </label><br><br>
-            <label>
-                Data de Nascimento: <br>
-                <input type="date" name="nascimento" value="<?=$info['data_nascimento'];?>">
-            </label><br><br>
-            <label>
-                Telefone: <br>
-                <input type="number" name="telefone" value="<?=$info['telefone'];?>">
-            </label><br><br>
-            <label>
-                CPF: <br>
-                <input type="number" name="cpf" value="<?=$info['cpf'];?>">
-            </label><br><br>
-            <label>
-                RG: <br>
-                <input type="number" name="rg" value="<?=$info['rg'];?>">
-            </label><br><br>
-            <label>
-                Endereço: <br>
-                <input type="text" name="endereco" value="<?=$info['endereco'];?>">
-            </label><br><br>
-            <label>
-                Nº: <br>
-                <input type="text" name="numero" value="<?=$info['numero'];?>">
-            </label><br><br>            
-            <label>
-                CEP: <br>
-                <input type="text" name="cep" value="<?=$info['cep'];?>">
-            </label><br><br>
-            <label>
-                UF:<br>
-                <input type="text" name="uf" value="<?=$info['uf'];?>">
-            </label><br><br>
-            <input type="submit" value="Salvar">           
-        </form>
+    <header><div class="container"><h1>BRLISTAS DIGITAL</h1></div></header>
+    <section class="container">            
+            <div class="titulo"><h3>ALTERAR DADOS</h3></div>
+
+            <form method="POST" action="editar_action.php">    
+                
+                    <input type="hidden" name="id" value="<?=$info['id'];?>">
+
+                    <input class="input" name="nome" value="<?=$info['nome'];?>">
+
+                    <input class="input" type="date" name="nascimento" value="<?=$info['data_nascimento'];?>">
+
+                    <input class="input" maxlength="14" name="telefone" value="<?=$info['telefone'];?>">
+
+                    <input class="input" maxlength="14" name="cpf" value="<?=$info['cpf'];?>" id="CPF">
+
+                    <input class="input" maxlength="12" name="rg" value="<?=$info['rg'];?>" id="RG">
+
+                    <input class="input" name="endereco" value="<?=$info['endereco'];?>">
+
+                    <input class="input" type="text" name="numero" value="<?=$info['numero'];?>">
+
+                    <input class="input"  maxlength="10" name="cep" value="<?=$info['cep'];?>" id="CEP">
+
+                    <input class="input" type="text" name="uf" maxlength="2" value="<?=$info['uf'];?>">
+
+                    <input class="button" type="submit" value="Salvar">
+                    <a href="index.php"><input class="button" type="button" value="Cancelar"></a>         
+            </form>
+        </section>
+        <script src="scripts/mascara.js"></script>
     </body>
 </html>
