@@ -1,6 +1,8 @@
 <?php
 include_once "config.php";
 
+// Buscando os dados salvos no banco para editar
+
 $id = filter_input(INPUT_GET, 'id');
 
 if(!empty($id)){
@@ -34,6 +36,8 @@ if(!empty($id)){
     <section class="container">            
             <div class="titulo"><h3>ALTERAR DADOS</h3></div>
 
+            <!-- Formulário para exibir os dados para editar -->
+
             <form method="POST" action="editar_action.php">    
                 
                     <input type="hidden" name="id" value="<?=$info['id'];?>">
@@ -57,6 +61,7 @@ if(!empty($id)){
                     <input class="input" type="text" name="uf" maxlength="2" value="<?=$info['uf'];?>">
 
                     <input class="button" type="submit" value="Salvar">
+                    
                     <a href="index.php"><input class="button" type="button" value="Cancelar"></a>         
             </form>
         </section>

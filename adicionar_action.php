@@ -3,6 +3,7 @@ session_start();
 
 include_once "config.php";
 
+// Recebendo os dados do furmulário cadastrar e inserindo no banco
 
 $input = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
@@ -34,6 +35,8 @@ if ($input){
     $sql->bindValue(':pessoa_id', $pessoa_id);
     $sql->bindValue(':telefone', $input['telefone']);
     $sql->execute(); 
+
+    // Criando mensagem de sucesso: Cadastro
 
     $_SESSION["cadastro"] = "Usuário cadastrado com sucesso!";
 

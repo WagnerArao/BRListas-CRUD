@@ -1,4 +1,6 @@
 
+// Máscara para o campo CPF do formulário
+
 document.addEventListener('keydown', function(event) {
     if(event.keyCode != 46 && event.keyCode != 8){
       var i = document.getElementById("CPF").value.length;
@@ -9,6 +11,8 @@ document.addEventListener('keydown', function(event) {
     }
   });
 
+  // Máscara para o campo RG do formulário
+
   document.addEventListener('keydown', function(event) {
     if(event.keyCode != 46 && event.keyCode != 8){
       var i = document.getElementById("RG").value.length;
@@ -18,6 +22,8 @@ document.addEventListener('keydown', function(event) {
         document.getElementById("RG").value = document.getElementById("RG").value + "-";
     }
   });
+
+  // Máscara para o campo CEP do formulário
 
   document.addEventListener('keydown', function(event) {
     if(event.keyCode != 46 && event.keyCode != 8){

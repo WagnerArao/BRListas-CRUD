@@ -9,13 +9,13 @@ $lista = [];
 if ($sql->rowCount() > 0){
     $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
 }
+
 ?>
 
 <html>
     <?php require "head.php";?>
     <body>
         <header>
-
         
             <div class="container"><h1>BRLISTAS DIGITAL</h1></div>
         </header>
@@ -43,9 +43,21 @@ if ($sql->rowCount() > 0){
             <?php $_SESSION["exclui"] = ""; ?>            
 
         <?php endif; ?>
+
+        <!-- Botão de cadastrar -->
     
-        <a href="adicionar.php"><button class="cadastro"><h5>CADASTRAR NOVO</h5></button></a>
+        <a href="adicionar.php"><button class="cadastro"><h5>CADASTRAR NOVO</h5></button></a>  
         
+        <!-- Exibindo mensagem caso não existam usuários cadastrados -->
+
+        <?php if($sql->rowCount() === 0) : ?>
+
+            <?php $_SESSION["vazio"] = "Não há dados a exibir!"; ?> 
+            <div class="flash"><?php echo$_SESSION["vazio"];?></div>
+                       
+
+        <?php endif; ?>
+
         <table>
             <tr>
                 <td><strong>NOME</strong></td>
@@ -58,31 +70,33 @@ if ($sql->rowCount() > 0){
                 <td><strong>RG</strong></td>
                 <td><strong>DATA DE NASCIMENTO</strong></td>
                 <td><strong>AÇÕES</strong></td>
-            </tr>
-            <?php 
+            </tr>   
             
 
-        foreach ($lista as $pessoa): ?>
+        <?php foreach ($lista as $pessoa): ?>                
 
+            <!-- Aplicando máscara para exibição do nome,  data de nascimento e UF na listagem -->
+            
             <?php $name = ucwords($pessoa['nome']);?>
-                <?php $nasc = date('d/m/Y', strtotime($pessoa['data_nascimento']));?>
-                <?php $estado = strtoupper($pessoa['uf']);?>
-                    
-                    <tr>
-                        <td><?=$name;?></td>
-                        <td><?=$pessoa['telefone'];?></td>
-                        <td><?=$pessoa['endereco'];?></td>
-                        <td><?=$pessoa['numero'];?></td>
-                        <td><?=$pessoa['cep'];?></td>
-                        <td><?=$estado;?></td>
-                        <td><?=$pessoa['cpf'];?></td>
-                        <td><?=$pessoa['rg'];?></td>
-                        <td><?=$nasc;?></td>
-                        <td>
-                            <a href="editar.php?id=<?=$pessoa['id']?>"><button class='button'>Editar</button></a>
-                            <a href="excluir.php?id=<?=$pessoa['id']?>"><button class='button' onclick="return confirm('Tem certeza que deseja excluir <?=$pessoa['nome']?>?')">Excluir</button></a>
-                        </td>
-                        
+            <?php $nasc = date('d/m/Y', strtotime($pessoa['data_nascimento']));?>
+            <?php $estado = strtoupper($pessoa['uf']);?>
+
+            <!-- Listando cada usuário cadastrado -->
+                
+                <tr>
+                    <td><?=$name;?></td>
+                    <td><?=$pessoa['telefone'];?></td>
+                    <td><?=$pessoa['endereco'];?></td>
+                    <td><?=$pessoa['numero'];?></td>
+                    <td><?=$pessoa['cep'];?></td>
+                    <td><?=$estado;?></td>
+                    <td><?=$pessoa['cpf'];?></td>
+                    <td><?=$pessoa['rg'];?></td>
+                    <td><?=$nasc;?></td>
+                    <td>
+                        <a href="editar.php?id=<?=$pessoa['id']?>"><button class='button'>Editar</button></a>
+                        <a href="excluir.php?id=<?=$pessoa['id']?>"><button class='button' onclick="return confirm('Tem certeza que deseja excluir <?=$pessoa['nome']?>?')">Excluir</button></a>
+                    </td>                        
                 </tr>
             <?php endforeach;?>           
         </table>

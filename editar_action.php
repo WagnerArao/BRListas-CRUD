@@ -3,6 +3,8 @@ session_start();
 
 include_once "config.php";
 
+// Recebendo os dados para edição do formulário editar e salvando as edições no banco
+
 $input = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 if ($input){
@@ -21,6 +23,8 @@ if ($input){
     $sql->bindValue(':cep', $input['cep']);
     $sql->bindValue(':uf', $input['uf']);
     $sql->execute();
+
+    // Criando mensagem de sucesso: Edição
 
     $_SESSION["altera"] = "Dados alterados com sucesso!";
 

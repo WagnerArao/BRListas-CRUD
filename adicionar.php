@@ -4,6 +4,8 @@
         <header><div class="container"><h1>BRLISTAS DIGITAL</h1></div></header>         
             <div class="titulo"><h3>CRIAR NOVO REGISTRO:</h3></div>
 
+            <!-- Formulário de cadastro -->
+
             <form method="POST" action="adicionar_action.php">            
 
                     <input class="input" name="nome" placeholder="Digite seu nome completo" required>

@@ -11,16 +11,6 @@ body {
     padding-bottom:50px;
 }
 
-#bg-image {
-    background-image: url('../imagens/background.jpg');
-    display: flex;
-    height: 1500px;
-    padding: 0px;
-    background-position: center;
-    background-size: cover;
-    justify-content: center;
-}
-
 section .container {
     max-width:1040px;
     margin:auto;
@@ -183,7 +173,6 @@ a {
     margin-top: 20px;
     font-size: 20px;
     justify-content: center;
-    align-items: center;
-    
+    align-items: center;   
     
 }
