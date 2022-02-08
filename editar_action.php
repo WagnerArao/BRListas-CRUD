@@ -1,4 +1,6 @@
 <?php 
+session_start();
+
 include_once "config.php";
 
 $input = filter_input_array(INPUT_POST, FILTER_DEFAULT);
@@ -19,6 +21,8 @@ if ($input){
     $sql->bindValue(':cep', $input['cep']);
     $sql->bindValue(':uf', $input['uf']);
     $sql->execute();
+
+    $_SESSION["altera"] = "Dados alterados com sucesso!";
 
     header('Location: index.php');
     exit;

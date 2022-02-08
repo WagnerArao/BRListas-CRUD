@@ -60,6 +60,6 @@ if(!empty($id)){
                     <a href="index.php"><input class="button" type="button" value="Cancelar"></a>         
             </form>
         </section>
-        <script src="scripts/mascara.js"></script>
+        <script src="scripts/mascaras.js"></script>
     </body>
 </html>

@@ -1,13 +1,14 @@
 <?php
+session_start();
+
 include_once "config.php";
 
 
-$input = filter_input_array(INPUT_POST, FILTER_DEFAULT, false);
+$input = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 if ($input){
 
-    $sql = $pdo->prepare("INSERT INTO estados (id, uf) VALUES (:id, :uf)");
-    $sql->bindValue(':id', $id);
+    $sql = $pdo->prepare("INSERT INTO estados (uf) VALUES (:uf)");
     $sql->bindValue(':uf', $input['uf']);
     $sql->execute();
     $estado_id = $pdo->lastInsertId();
@@ -32,14 +33,11 @@ if ($input){
     $sql = $pdo->prepare("INSERT INTO telefones (pessoa_id, telefone) VALUES (:pessoa_id, :telefone)");
     $sql->bindValue(':pessoa_id', $pessoa_id);
     $sql->bindValue(':telefone', $input['telefone']);
-    $sql->execute();    
+    $sql->execute(); 
+
+    $_SESSION["cadastro"] = "Usuário cadastrado com sucesso!";
 
     header('Location: index.php');
-    echo "Dados adicionados com sucesso!";
-    exit;
+    exit; 
 
-} else {
-    return false;
-    header('Location: adicionar.php');    
-    exit;
-} 
+}
